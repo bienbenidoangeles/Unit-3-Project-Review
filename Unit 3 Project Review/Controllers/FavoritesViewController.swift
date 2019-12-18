@@ -64,8 +64,6 @@ class FavoritesViewController: UIViewController {
             fatalError("failed to segue")
         }
         let favorite = favorites[indexPath.row]
-        
-        //let podCast = Podcast(collectionId: <#T##Int#>, trackId: favorite.trackId, artistName: <#T##String#>, collectionName: favorite.collectionName, artworkUrl30: <#T##String#>, artworkUrl60: <#T##String#>, artworkUrl100: <#T##String#>, releaseDate: <#T##String#>, country: <#T##String#>, currency: <#T##String#>, primaryGenreName: <#T##String#>, artworkUrl600: favorite.artworkUrl600, genres: <#T##[String]#>)
         detailVC.passedObj = favorite
     }
 }

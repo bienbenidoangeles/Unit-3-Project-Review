@@ -15,6 +15,7 @@ class PodcastsDetailViewController: UIViewController {
     @IBOutlet weak var collectionNameLabel:UILabel!
     @IBOutlet weak var genreLabel:UILabel!
     @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var passedObj: Podcast?
 
@@ -59,6 +60,11 @@ class PodcastsDetailViewController: UIViewController {
             case .success(let image):
                 DispatchQueue.main.async {
                     self?.podcastImageView.image = image
+                    if validPodCast.favoritedBy != nil {
+                        self?.favoriteButton.isHidden = true
+                    } else {
+                        self?.favoriteButton.isHidden = false
+                    }
                 }
             }
         }

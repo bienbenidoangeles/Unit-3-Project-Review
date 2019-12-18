@@ -178,6 +178,7 @@
                         <outlet property="artistNameLabel" destination="Ksr-dk-VPf" id="tmV-ZO-ui7"/>
                         <outlet property="collectionNameLabel" destination="CvZ-L3-TB0" id="tv4-dd-V2I"/>
                         <outlet property="countryLabel" destination="azQ-TR-wOv" id="28C-fc-DxI"/>
+                        <outlet property="favoriteButton" destination="nNR-NS-s5a" id="Hvx-6a-vLK"/>
                         <outlet property="genreLabel" destination="IFR-HV-90X" id="8Fp-ih-Xqw"/>
                         <outlet property="podcastImageView" destination="KHV-j7-dHo" id="zSf-et-RdE"/>
                     </connections>
@@ -314,6 +315,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nph-dM-Z2H"/>
+        <segue reference="NX8-AS-uPQ"/>
     </inferredMetricsTieBreakers>
 </document>
