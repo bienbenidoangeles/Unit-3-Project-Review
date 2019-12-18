@@ -68,11 +68,11 @@ class PodCastCell: UITableViewCell {
         }
         artistNameLabel.text = podcast.artistName
         collectionNameLabel.text = podcast.collectionName
-        genresLabel.text = podcast.genres.joined(separator: ", ")
+        genresLabel.text = podcast.genres?.joined(separator: ", ")
         
     }
     
-    func configureFavoritesCell(for favorites: GetFavoritesModel){
+    func configureFavoritesCell(for favorites: Podcast){
         self.favoritesURLString = favorites.artworkUrl600
         guard let validImageAsString = self.favoritesURLString else {
             return

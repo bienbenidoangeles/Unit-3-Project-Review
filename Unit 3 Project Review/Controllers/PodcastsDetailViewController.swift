@@ -27,7 +27,8 @@ class PodcastsDetailViewController: UIViewController {
         guard let validPodCast = passedObj else { fatalError("failed to get valid PodCAST, check prepare for segue")
         }
         
-        let postedFavorite = PostFavoritesModel(trackId: validPodCast.trackId, favoritedBy: "B.A.", collectionName: validPodCast.collectionName, artworkUrl600: validPodCast.artworkUrl600)
+        let postedFavorite = Podcast(collectionId: passedObj?.collectionId ?? 0, trackId: validPodCast.trackId, artistName: passedObj?.artistName ?? "N/A", collectionName: validPodCast.collectionName, artworkUrl30: nil, artworkUrl60: nil, artworkUrl100: nil, releaseDate: nil, country: passedObj?.country ?? "N/A", currency: nil, primaryGenreName: passedObj?.primaryGenreName ?? "N/A", artworkUrl600: validPodCast.artworkUrl600, genres: passedObj?.genres ?? ["N/A"], favoritedBy: "B.A.")
+        
         PodcastAPIClient.postPodCast(favoritedPodcast: postedFavorite) {[weak self] (result) in
             switch result{
             case .failure(let appError):
@@ -63,7 +64,7 @@ class PodcastsDetailViewController: UIViewController {
         }
         artistNameLabel.text = validPodCast.artistName
         collectionNameLabel.text = validPodCast.collectionName
-        genreLabel.text = "Genre: \(validPodCast.primaryGenreName)\nSubgenre(s): \(validPodCast.genres.joined(separator: ", "))"
+        genreLabel.text = "Genre: \(validPodCast.primaryGenreName ?? "N/A")\nSubgenre(s): \(validPodCast.genres?.joined(separator: ", ") ?? "N/A")"
         countryLabel.text = validPodCast.country
     }
 

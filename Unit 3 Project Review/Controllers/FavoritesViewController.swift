@@ -14,7 +14,7 @@ class FavoritesViewController: UIViewController {
     
     private var refreshControl: UIRefreshControl!
     
-    var favorites = [GetFavoritesModel](){
+    var favorites = [Podcast](){
         didSet{
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -44,6 +44,9 @@ class FavoritesViewController: UIViewController {
     @objc
     func loadData(){
         PodcastAPIClient.getPodcast{[weak self] (result) in
+            DispatchQueue.main.async {
+                self?.refreshControl.endRefreshing()
+            }
             switch result{
             case .failure(let appError):
                 DispatchQueue.main.async {
@@ -63,7 +66,7 @@ class FavoritesViewController: UIViewController {
         let favorite = favorites[indexPath.row]
         
         //let podCast = Podcast(collectionId: <#T##Int#>, trackId: favorite.trackId, artistName: <#T##String#>, collectionName: favorite.collectionName, artworkUrl30: <#T##String#>, artworkUrl60: <#T##String#>, artworkUrl100: <#T##String#>, releaseDate: <#T##String#>, country: <#T##String#>, currency: <#T##String#>, primaryGenreName: <#T##String#>, artworkUrl600: favorite.artworkUrl600, genres: <#T##[String]#>)
-        //detailVC.passedObj = podCast
+        detailVC.passedObj = favorite
     }
 }
 
